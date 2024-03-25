@@ -14,9 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Degree::create(['degreeTitle' => 'High School']);
-        Degree::create(['degreeTitle' => 'BSc']);
-        Degree::create(['degreeTitle' => 'MSc']);
+        Degree::insert([
+            ['degreeTitle' => 'High School'],
+            ['degreeTitle' => 'BSc'],
+            ['degreeTitle' => 'MSc'],
+        ]);
 
         Candidate::factory()->count(100)->create();
     }

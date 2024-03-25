@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CandidateController extends Controller
 {
@@ -13,13 +15,15 @@ class CandidateController extends Controller
         try {
             if ($request->has('jobAppliedFor')) {
                 $jobAppliedFor = $request->input('jobAppliedFor');
-                $candidates = Candidate::whereJsonContains('jobAppliedFor', $jobAppliedFor)->get();
+                $candidates = Candidate::where('jobAppliedFor', 'like', '%'.$jobAppliedFor.'%')->get();
+                //$candidates = Candidate::where('jobAppliedFor', $jobAppliedFor)->get();
             } else {
                 $candidates = Candidate::all();
             }
 
             return response()->json($candidates);
         } catch (\Exception $e) {
+            // Return a generic error response
             return response()->json(['error' => 'Failed to fetch candidates.'], 500);
         }
     }

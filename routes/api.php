@@ -19,7 +19,7 @@ Route::delete('/candidates/{id}', [CandidateController::class, 'destroy']);
 // Degree routes
 Route::get('/degrees', [DegreeController::class, 'index']);
 Route::post('/degrees', [DegreeController::class, 'store']);
-//Route::get('/degrees/{id}', [DegreeController::class, 'show']);
+Route::get('/degrees/{id}', [DegreeController::class, 'show']);
 Route::put('/degrees/{id}', [DegreeController::class, 'update']);
 Route::delete('/degrees/{id}', [DegreeController::class, 'destroy']);
 

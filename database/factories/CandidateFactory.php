@@ -13,7 +13,7 @@ class CandidateFactory extends Factory
     {
         $options = ['PHP Developer', 'JAVA Developer', 'PYTHON Developer', 'ERP Support', 'Sales', 'Technician'];
         $count = count($options);
-        $jobAppliedFor = $this->faker->randomElements($options, $count);
+        $jobAppliedFor = $this->faker->randomElements($options, rand(1,$count));
         return [
             'lastName' => $this->faker->lastName,
             'firstName' => $this->faker->firstName,
