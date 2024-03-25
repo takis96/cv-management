@@ -11,6 +11,9 @@ class CandidateFactory extends Factory
 
     public function definition()
     {
+        $options = ['PHP Developer', 'JAVA Developer', 'PYTHON Developer', 'ERP Support', 'Sales', 'Technician'];
+        $count = count($options);
+        $jobAppliedFor = $this->faker->randomElements($options, $count);
         return [
             'lastName' => $this->faker->lastName,
             'firstName' => $this->faker->firstName,
@@ -18,7 +21,7 @@ class CandidateFactory extends Factory
             'mobile' => $this->faker->numerify('##########'),
             'degree' => $this->faker->randomElement(['BSc', 'MSc', 'PhD']),
             'resume' => 'path/to/resume.pdf', // Path to a sample resume file
-            'jobAppliedFor' => $this->faker->randomElements(['PHP Developer', 'JAVA Developer', 'PYTHON Developer', 'ERP Support', 'Sales', 'Technician'], $count = 2),
+            'jobAppliedFor' => implode(',', $jobAppliedFor),
         ];
     }
 }

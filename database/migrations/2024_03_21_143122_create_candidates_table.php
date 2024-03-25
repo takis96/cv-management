@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->string('degree');
             $table->string('resume');
             $table->string('jobAppliedFor');
-            $table->date('applicationDate')->default(DB::raw('CURRENT_DATE'));
+            $table->date('applicationDate')->default(Carbon::now());
             $table->timestamps();
         });
     }
